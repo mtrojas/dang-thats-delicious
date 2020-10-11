@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const storeController = require('../controllers/storeController');
 const userController = require('../controllers/userController');
+const authController = require('../controllers/authController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 router.get('/', catchErrors(storeController.getStores));
@@ -16,7 +17,8 @@ router.post('/add',
 router.post('/add/:id',
   storeController.upload,
   catchErrors(storeController.resize),
-  catchErrors(storeController.updateStore));
+  catchErrors(storeController.updateStore)
+);
 
 router.get('/stores/:id/edit', catchErrors(storeController.editStore));
 router.get('/store/:slug', catchErrors(storeController.getStoreBySlug));
@@ -30,7 +32,11 @@ router.get('/register', userController.registerForm);
 // 1. Validate the registration data
 // 2. Register the user
 // 3. We need to log them in
-router.post('/register', userController.validateRegister)
+router.post('/register',
+  userController.validateRegister,
+  userController.register,
+  authController.login
+);
 
 
 module.exports = router;
