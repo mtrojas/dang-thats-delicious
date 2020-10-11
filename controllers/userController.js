@@ -39,4 +39,3 @@ exports.register = async (req, res, next) => {
   next(); // Pass to authController.login
 };
 
-
