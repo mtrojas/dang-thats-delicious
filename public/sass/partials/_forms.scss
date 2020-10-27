@@ -1,6 +1,7 @@
-input, textarea {
-  width:100%;
-  padding:10px;
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
   border: 1px solid $grey;
   &.input {
     &--error {
@@ -18,6 +19,8 @@ label {
   background: white;
   padding: 2rem;
   box-shadow: $grad;
+  // Added the next line since margin-top was not working on login form
+  margin-top: 4rem;
   & + .form {
     margin-top: 4rem;
   }

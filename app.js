@@ -12,6 +12,7 @@ const expressValidator = require('express-validator');
 const routes = require('./routes/index');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
+require('./handlers/passport');
 
 // create our Express app
 const app = express();
@@ -24,7 +25,6 @@ app.set('view engine', 'pug'); // we use the engine pug, mustache or EJS work gr
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Takes the raw requests and turns them into usable properties on req.body
-// In video #4 wes' value is { extended: false }
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
